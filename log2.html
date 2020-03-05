@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Predictive FOV Generation</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Rotational <br />Motion Model</h1>
+									<p></p>
+								</header>
+								<div class="image main"><img src="images/rotationalmodel.PNG" alt="" /></div>
+
+								<p>
+									&emsp; The amount of data consumed by spherical 360 video is enormous in comparison to traditional 2D video.
+									This emphasizes the importance of efficient video compression for storage and transmission.
+									However, the prevailing approach is to project the spherical video onto a plane and utilize 2D video coding standards.
+									This approach is significantly sub-optimal due to such standards being designed for regular 2D video. 
+								</p>
+
+								<p>
+									&emsp; The projected 360 video is warped into a "fisheye" frame where motion estimation performs very poorly.
+									A simple translation of an object on the sphere can yield a very complex motion on the projected plane.
+									Bharath Vishwanath et al propose to perform motion compensation directly on the sphere before the projection
+									to 2D, and then using Equirectangular Projection (ERP) onto the plane to perform the 2D compression standards as usual.
+								</p>
+
+								<h3>Prediction Framework</h3>
+
+								<p>
+									<span class="image right"><img src="images/vectorblock.PNG" alt="" /></span>
+									&emsp; The block of pixels corresponding to the current video frame on the sphere is the reference frame. The vector <i>v</i> pointing 
+									to the center of this block from the radial center of the sphere is the prediction variable. A radial search pattern around the 
+									block corresponding to <i>v</i> obtains the possible set of reference locations from the motion vectors in the frame. 
+									<i>v</i> is rotated by an angle <i>&alpha;</i> to the next frame vector <i>v'</i> corresponding to the predicted block.
+									Bharath Vishwanath et al propose to use Rodrigue's rotation formula to efficiently rotate the vector on the 3D sphere. 
+									The rotated spherical coordinates are subsequently mapped to the reference frame. The 3D translation model is then used 
+									to perform interpolation in the reference frame to obtain the required prediction.
+								</p>
+								
+								<p>
+									&emsp; This method differs from prevalent methods by performing the motion compensation before the ERP projection, as opposed to after.
+									Bharath Vishwanath et al were able to attain a significant overall bitrate reduction of 11% more than the traditionally used 
+									High Efficiency Video Encoding (HEVC). This framework also retains the shape and size of objects in the frame after motion, 
+									which current approaches such as HEVC struggle with. The preserved shape and bitrate reduction demonstrate the effectiveness of this technique.
+								</p>
+
+								<b>Further Reading: <a href="https://ieeexplore.ieee.org/abstract/document/8122231">Rotational Motion Model for Temporal Prediction in 360 Video Coding</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

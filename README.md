@@ -1,2 +1,1 @@
-# VRViewpointPrediction
-Virtual Reality Viewpoint Prediction Website
+# www.VRViewpoint.com
