@@ -53,7 +53,7 @@
 								<p>
 									&emsp; The bandwidth reduction is a result of the ability to only render the current viewpoint if it is known in advance.
 									This is an optimization opportunity unique to 360 video. The idea is to predict the next viewpoint angle, and thus the next Field of View (FOV), 
-									and only transmit the respective FOV frame on the sphere. As mentioned above, the ideal scenerio results in 80% of the sphere remaining unrendered,
+									and only transmit the respective FOV frame on the sphere. As mentioned above, the ideal scenario results in 80% of the sphere remaining unrendered,
 									significantly reducing computation and bandwidth.
 								</p>
 
@@ -82,7 +82,7 @@
 									0.1, 0.5, and 1.0, the NN mean viewpoint center prediction error and mean viewpoint deviation prediction error are respectively 
 									0.92, 8.40, 18.13 and 0.68, 6.32, 13.48. A lower window clearly reduces error, but higher windows significantly reduce computation. 
 									Regardless, even a window of 0.1 seconds to predict the transmitted FOV is a remarkable reduction in computation in comparison to the 
-									typically used 90 frames per second of common VR hardware. Yanan Bao et al reccommend sliding windows of 0.2 or 0.3 for best results.
+									typically used 90 frames per second of common VR hardware. Yanan Bao et al recommend sliding windows of 0.2 or 0.3 for best results.
 								</p>
 
 								<h3>Transmission Area</h3>
