@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reading Summary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h2>
+									Reading Summary: </br>Predictive View Generation </br>to Enable Mobile 360-degree and VR Experiences
+								</h2>
+
+								<p>
+									Nicolaus Karamanian, CSC 499 </br>March 12th, 2020
+								</p>	
+								
+								<h3>The Problem</h3>
+
+								<p> 
+									&emsp; 360-degree video for VR, now becoming popular for consumer and enterprise use, delivers 
+									an experience requiring ultra-high bandwidth while keeping an ultra-low latency. The high bandwidth and 
+									computation arises from the increased video size being shown to the user, which is a result of all areas in a 360 
+									sphere around the user’s head being rendered. When the whole sphere is rendered, the headset detects where the user is looking and 
+									displays that area with as low latency as possible to prevent motion sickness. Ways to reduce video size and computation time will allow 
+									less powerful machines to run current VR applications as well as increase the complexity of high end VR.
+								</p>
+
+								<h3>Main Idea</h3>
+
+								<p>
+									&emsp; If the computer can predict the user’s next Field of View (FOV), then only the predicted area of the video 
+									sphere would need to be rendered while maintaining a low latency. Xueshi Hou et al propose to cut the video sphere 
+									into 72 tiles, detect which tiles are within the user’s FOV, and train a machine learning model to predict which of the 
+									72 tiles the user’s next FOV will be in. Then, they generate an FOV that balances viewpoint accuracy and bandwidth/pixel 
+									savings. This differs from many similar studies by completely isolating the non-human element for viewpoint prediction.
+								</p>
+
+								<h3>Major Strengths</h3>
+
+								<p>
+									&emsp; Unlike many similar publications, the viewpoint dataset used in this study was of 36 000 separate 
+									samples from different users. Many similar studies will see researchers take their own data with their owned 
+									hand-picked users with at most a couple hundred samples. This greatly increases the validity and consistency of this study.
+								</p>
+								
+								<p>
+									&emsp; Xueshi Hou et al were able to attain a highly consistent 95% FOV prediction accuracy independent of the 
+									machine learning model used, which shows the benefits of this method. The suggested model, Long Short-Term Memory (LSTM), 
+									was able to attain bandwidth/pixel savings ranging from 43% to 71% depending on the application.
+								</p>
+
+								<p>
+									&emsp; Because the non-human element is isolated for prediction, I believe this method can merge with other methods 
+									very well, giving the opportunity for vast increased bandwidth savings.
+								</p>
+
+								<h3>Major Weaknesses</h3>
+
+								<p>
+									&emsp; While there are more than enough data samples from various users, I believe a larger variety of applications 
+									should have been used for the data. They also trained the data separately for each application, which 
+									introduces a bias to the results and may not produce a general method for reducing bandwidth across all VR applications.
+								</p>
+
+								<p>
+									&emsp; Similar to above, specifically separating medium (regular) movements with high speed movements may also 
+									introduce a bias to the results, and a way for the machine to detect the exact movement speed type in real time is not specified.
+								</p>
+
+								<p>
+									&emsp; It is not clear why bandwidth/pixel savings percentage varies greatly across different applications, 
+									even though the FOV accuracy is consistent. Perhaps more high speed motion requires a larger predicted FOV, 
+									and the prediction accuracy is maintained? Not sure, more info is needed.
+								</p>
+
+								<h3>Possible Improvements</h3>
+
+								<p>
+									&emsp; As mentioned above, because this method isolates the non-human element for prediction, 
+									I believe this can be added to a different method focusing on the human element for a maximized bandwidth saving.
+								</p>
+
+								<b>Further Reading: <a href="https://dl.acm.org/doi/abs/10.1145/3229625.3229629">Predictive View Generation to Enable Mobile 360-degree and VR Experiences</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

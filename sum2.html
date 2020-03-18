@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reading Summary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h2>
+									Reading Summary: </br>Shooting a Moving Target: </br>Motion-Prediction-Based Transmission for 360-Degree Videos
+								</h2>
+
+								<p>
+									Nicolaus Karamanian, CSC 499 </br>March 14th, 2020
+								</p>	
+								
+								<h3>The Problem</h3>
+
+								<p> 
+									&emsp; The rapid development of VR has allowed 360-degree video content to proliferate. This imposes a significant 
+									challenge from a network perspective because it consumes 4 to 6 times the bandwidth of regular video with the same 
+									resolution. From a user perspective, this results in requiring powerful (and expensive) machines to run basic VR applications.
+								</p>
+
+								<h3>Main Idea</h3>
+
+								<p>
+									&emsp; Predicting a user’s motion will allow a user’s next Field of View (FOV) on the 360 video sphere to be 
+									generated in advance. Yanan Bao et al propose to train a machine learning Neural Network on the pitch, roll, and 
+									yaw (X,Y, and Z) angles of the user’s head viewpoint to predict the subsequent angles. Then, by also predicting the 
+									error/deviation, a transmission mechanism renders an area on the sphere to be transmitted to the user at low latency. 
+									The mechanism for determining the transmission area based on prediction error is novel and performs better from similar proposed models.
+								</p>
+
+								<h3>Major Strengths</h3>
+
+								<p>
+									&emsp; By predicting the next viewpoint and the error from the prediction, the transmission area renders the 
+									predicted angles added to the error/deviation angles. In doing so, Yanan Bao et al were able to attain an 
+									astounding 99.9% viewpoint prediction accuracy when maintaining an average bandwidth reduction of 45%.
+								</p>
+								
+								<p>
+									&emsp; The nature of the model allows the prediction window (lookahead) to be increased for vastly 
+									increased bandwidth reduction if an implementer decides to reduce viewpoint prediction accuracy. 
+									Perhaps user’s can decide themselves whether to sacrifice quality experience such as unrendered corners 
+									for larger reductions in computations. As an example, viewpoint accuracy averages to 72% when reducing bandwidth by 80%.
+								</p>
+
+								<p>
+									&emsp; This study isolates the human element for prediction. This may allow the method to 
+									mesh well with other prediction models focusing on non-human elements.
+								</p>
+
+								<h3>Major Weaknesses</h3>
+
+								<p>
+									&emsp; This study’s dataset contained temporal viewpoint angles from 153 subjects. While I applaud the unbiased 
+									decision to record their own data, there are many similar datasets available with thousands of users watching a 
+									variety of videos that may have led to even more consistent results.
+								</p>
+
+								<p>
+									&emsp; The dataset is taken from mostly first-time VR users. Likely, experienced VR 
+									users will act very differently in comparison, and the results of this study could vary greatly due to this.
+								</p>
+
+								<p>
+									&emsp; The transmitted area was chosen as a consistent round area to account for maximum error. 
+									Perhaps a shape more fitted to the prediction angle errors (eg. ovals or rectangles) or one that was a 
+									function of the errors would further reduce consumed bandwidth.
+								</p>
+
+								<h3>Possible Improvements</h3>
+
+								<p>
+									&emsp; The method proposed separately predicts X, Y, and Z angles, which reflects the temporal angle 
+									input data. While this is a good starting point, humans tend not to look on strictly X, Y, or Z angles. 
+									Yanan Bao et al showed the prediction correlation between angles but perhaps training the data on a model using a 
+									more commonly viewed angled frame of reference in addition could produce more favorable or contrasting results.
+								</p>
+
+								<b>Further Reading: <a href="https://ieeexplore.ieee.org/abstract/document/7840720">Shooting a Moving Target: Motion-Prediction-Based Transmission for 360-Degree Videos</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
