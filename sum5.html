@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reading Summary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h2>
+									Reading Summary: </br>Towards Bandwidth Efficient Adaptive Streaming</br> of
+									Omnidirectional Video over HTTP (Viewpoint Rendering Portion)
+									
+								</h2>
+
+								<p>
+									Nicolaus Karamanian, CSC 499 </br>March 25th, 2020
+								</p>	
+								
+								<h3>The Problem</h3>
+
+								<p> 
+									&emsp; Real-time entertainment streaming services now account for more than 70% of the open, unmanaged internet. A large growing bandwidth hungry application and service is omnidirectional-360-degree videos. Streaming omnidirectional video over HTTP imposes an important challenge on today’s video delivery infrastructures.
+								</p>
+
+								<h3>Main Idea</h3>
+
+								<p>
+									&emsp; Video is tiled as encoded in HEVC/H.265 which enables multiple different quality representations. MPREG-DASH SRD describes the tile structure of video segments which allow clients to request tiles for certain qualities conditional on the user’s current FOV. There are 3 different proposed strategies for reducing bandwidth: high quality tiles within FOV and low quality tiles outside (full), high quality tiles within current FOV and low quality tiles outside with medium quality tiles within predicted FOV outside current FOV (full advanced), and high quality tiles within FOV and blank tiles outside (partial delivery).
+								</p>
+
+								<h3>Major Strengths</h3>
+
+									<ul>
+										<li>
+											Full delivery method (high and low quality) performs very well with high bitrate savings.
+										</li>
+										<li>
+											“Sweetspot” tiling number with best results (6x4) occurs at a lower performance hit, no need for scaling up.
+										</li>
+										<li>
+											Designed to work well with a viewpoint prediction model to increase user experience.
+										</li>
+									</ul>
+
+								<h3>Major Weaknesses</h3>
+
+									<ul>
+										<li>
+											Low quality portions are occasionally displayed to users, a seemingly unavoidable weakness for realtime FOV detection methods.
+										</li>
+										<li>
+											Partial Delivery is unusable in my opinion, it's likely that users will constantly notice blank tiles.
+										</li>
+										<li>
+											While bandwidth/space is saved, it is unclear how much performance is decreased by even the minimal model. They mention that requesting tiles individually drastically increases HTTP requests impacting overall streaming performance, but do not compare the proposed model.
+										</li>
+									</ul>
+
+								<h3>Possible Improvements</h3>
+
+								<p>
+									&emsp; Add a tiling viewpoint prediction model for the full delivery advanced structure that perhaps utilizes the same tiles as already structured, may save a lot of space/computation.
+								</p>
+
+								<b>Further Reading: <a href="https://dl.acm.org/doi/abs/10.1145/3083187.3084016">Towards Bandwidth Efficient Adaptive Streaming of Omnidirectional Video over HTTP
+									</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

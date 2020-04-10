@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reading Summary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h2>
+									Reading Summary: </br>Adaptive 360 VR Video Streaming: Divide and Conquer
+								</h2>
+
+								<p>
+									Nicolaus Karamanian, CSC 499 </br>March 18th, 2020
+								</p>	
+								
+								<h3>The Problem</h3>
+
+								<p> 
+									&emsp; There has been a significant increase in interest in recent years towards new 3D media such as 360 VR videos. The immersive spherical video allows for viewers to control their own field of view during playback. Unfortunately, 360 VR videos are extremely bandwidth intensive, and therefore are difficult to stream at acceptable quality levels.
+								</p>
+
+								<h3>Main Idea</h3>
+
+								<p>
+									&emsp; Create a dynamic view-aware bandwidth efficient adaptation technique. Generate a 3D (hexaface) sphere mesh surrounding the video sphere to separate or “cut” it into various segments, with 4 segments in the middle section and 1 each on the top and bottom. The middle has more sections to emphasize most action in videos. MPEG-DASH SRD defines the reference space for each tile corresponding to the rectangular region encompassing the entire raw 360 video. Then, track the viewport X,Y and Z axis, and transform the (Euler) angles into a unit rotation matrix (quaternion). Calculate normalized direction vector values to find the segments representing the user’s current FOV. Send high quality bits to segments within the user’s field of view, and low quality to segments outside.
+								</p>
+
+								<h3>Major Strengths</h3>
+
+									<ul>
+										<li>
+											Massive bandwidth savings, upwards of 70% for high quality videos!
+										</li>
+										<li>
+											Works well on low end hardware, very scalable.
+										</li>
+										<li>
+											If unnoticable by users (and works well), this method is a realtime render reduction technique, which completely removes the need for predicting viewpoints.
+										</li>
+									</ul>
+
+								<h3>Major Weaknesses</h3>
+
+									<ul>
+										<li>
+											Many other studies suggest that detecting the user’s viewpoint in real time, then calculating/altering the rendering of the video causes too much latency for VR experiences. It is unclear whether this method is efficient/fast enough to ignore this problem.
+										</li>
+										<li>
+											Unclear why they chose 6 segments. They mention quickly that it is a result of performance/quality trade-offs and that higher quality hardware can use more tiles, but no suggestions on the scalability of it.
+										</li>
+										<li>
+											Low quality video can be seen in the peripheral with this method, which is a result of using static segments.
+										</li>
+									</ul>
+
+								<h3>Possible Improvements</h3>
+
+								<p>
+									&emsp; They propose to use a static segmented mesh. If they can detect the user viewport and adjust rendering in real time, can a rotating segment representing high quality video rotate with the user’s viewport? Perhaps they considered this and it uses too much computation for real time results.
+								</p>
+
+								<b>Further Reading: <a href="https://ieeexplore.ieee.org/abstract/document/7823595">Adaptive 360 VR Video Streaming: Divide and Conquer</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

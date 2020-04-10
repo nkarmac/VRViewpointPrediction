@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reading Summary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h2>
+									Reading Summary: </br>Optimizing 360 Video Delivery Over Cellular Networks
+								</h2>
+
+								<p>
+									Nicolaus Karamanian, CSC 499 </br>March 18th, 2020
+								</p>	
+								
+								<h3>The Problem</h3>
+
+								<p> 
+									&emsp; 360-degree videos provide users with a panoramic view allowing them to freeling control their viewpoint during streaming. Only a portion of the 360 video sphere is visible at any given time, however the entire 360 raw video frame is transmitted, wasting bandwidth.
+								</p>
+
+								<h3>Main Idea</h3>
+
+								<p>
+									&emsp; Reduce bandwidth consumption by predicting the user’s head movement and only transmit the respective predicted portion of the 360 video. Track user pitch, yaw, and roll (X,Y, and Z) angles and predict future head positions (1 second sliding window) with a model built from weighted linear regression (WLR). WLR puts more weight on a more recent sample (head position reading). Predictions are considered accurate if all three angles current angles are within 10 degrees of the prediction. Prediction errors are inevitable due to human randomness, so progressively grow the prediction area as more prediction errors are detected.
+								</p>
+
+								<h3>Major Strengths</h3>
+
+									<ul>
+										<li>
+											High short term accuracy of 96.6% and 92.4% for sliding windows of 0.5 seconds and 1 second respectively.
+										</li>
+										<li>
+											A relatively non-intensive implementation for a high amount of bandwidth savings (designed for cellular networks).
+										</li>
+										<li>
+											The method to handle prediction errors is innovative. Growing the prediction area over time if a specific user is more prone to prediction errors is a good way to handle outliers.
+										</li>
+									</ul>
+
+								<h3>Major Weaknesses</h3>
+
+									<ul>
+										<li>
+											The “longer term” prediction accuracy is very low compared to similar studies. With a sliding window of 2 seconds, the accuracy drops to 71.2%. 
+										</li>
+										<li>
+											The proposed model allows for stalling if the user’s head movement is quick and exhibiting no trend.
+										</li>
+										<li>
+											A sample size of 5 people is not large enough to build a consistent model, and I believe not large enough to draw a conclusion.
+										</li>
+									</ul>
+
+								<h3>Possible Improvements</h3>
+
+								<p>
+									&emsp; Instead of a model that does not transmit non predicted portions of the 360 video at all (and progressively sending more as errors occur), transmit all video at very very low quality video instead. This will remove the stutter/stalling if a user’s head movement is too unpredictable at the cost of minimal bandwidth. The tradeoff for a better user experience is worth it in my opinion.
+								</p>
+
+								<p>
+									&emsp; Also, perhaps WLR would not perform as well as various other prediction methods, such as a Neural Network. Other similar studies had much higher “long term” (2 second sliding window) accuracy results.
+								</p>
+
+								<b>Further Reading: <a href="https://dl.acm.org/doi/abs/10.1145/2980055.2980056">Optimizing 360 Video Delivery Over Cellular Networks</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

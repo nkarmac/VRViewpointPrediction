@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reading Summary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h2>
+									Reading Summary: </br>Motion-Prediction-Based Multicast</br> for 360-Degree
+									Video Transmissions (Viewpoint Prediction Portion)
+								</h2>
+
+								<p>
+									Nicolaus Karamanian, CSC 499 </br>March 25th, 2020
+								</p>	
+								
+								<h3>The Problem</h3>
+
+								<p> 
+									&emsp; 360-degree videos have a size 4-5x that of regular 2D videos. Each viewer has to wear a Head-Mounted Display (HMD), and since screen sharing is impossible, a group watching the same content requires multiple parallel video-streams. Due to the large increase in bandwidth for even one video, multiple parallel streams would choke an entire network.
+								</p>
+
+								<h3>Main Idea</h3>
+
+								<p>
+									&emsp; A motion-prediction based multicast serves concurrent viewers. Viewers typically show similar motion patterns when watching the same 360 videos, so perform temporal prediction of view motion based on previous states to optimize bandwidth. Obtain X,Y, and Z angles from individual HMDs, and record each user’s previous angles and motions. Train a neural network for a future user angle/motion prediction model that over-samples cases with large errors. Generate a predicted FOV for each individual viewer with an accuracy of at least 99.9% (increase predicted FOV size until accuracy met). Use a “smart” multicast to unicast the predicted frame portion to each individual viewer, and if multiple users have the same FOV, multicast that portion (unless individual unicasts cost less).
+								</p>
+
+								<h3>Major Strengths</h3>
+
+									<ul>
+										<li>
+											Great bandwidth reduction results of over 50% when compared to full multicasting.
+										</li>
+										<li>
+											The 99.9% accuracy requirement assures that the same full quality before the method is applied is always maintained.
+										</li>
+										<li>
+											Due to switching between multicasting and unicasting based on cost, the room for error is large (a large error falls back to the base case of full multicasting).
+										</li>
+									</ul>
+
+								<h3>Major Weaknesses</h3>
+
+									<ul>
+										<li>
+											This method computes video compression online, especially when switching to multiple unicast streaming, which greatly raises computation and may cause more unexpected stutters than typical video loading.
+										</li>
+										<li>
+											Multicasting has no retransmission, and because this method uses previous online data to predict future data, such predictions can be completely wrong if the previous frames were not transmitted/corrupt.
+										</li>
+										<li>
+											They focus on correcting large errors by not considering Mean Square Error for the regression model, stating that large error corrections could cover small errors. The accuracy requirement reduces this problem, but it is unclear whether many small errors is a better trade-off for few large ones in this case.
+										</li>
+									</ul>
+
+								<h3>Possible Improvements</h3>
+
+								<p>
+									&emsp; If possible, use storage to trade for online computation, perhaps by preprocessing the different viewpoint’s compressed frames offline (as opposed to online like proposed).
+								</p>
+
+								<b>Further Reading: <a href="https://ieeexplore.ieee.org/abstract/document/7964928">Motion-Prediction-Based Multicast for 360-Degree Video Transmissions</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

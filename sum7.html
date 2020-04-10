@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reading Summary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h2>
+									Reading Summary: </br>Rotational Motion Model for</br> Temporal Prediction in 360 Video Coding
+								</h2>
+
+								<p>
+									Nicolaus Karamanian, CSC 499 </br>March 27th, 2020
+								</p>	
+								
+								<h3>The Problem</h3>
+
+								<p> 
+									&emsp; Due to the enormous amount of data consumed by spherical video, it is imperative to efficiently compress video data for storage and transmission. Current approaches simply project the spherical video onto 2D planes to be processed by 2D video coding standards. This is significantly suboptimal due to the skewed frames from the translation. Translation in the projected domain does not preserve an object’s shape and size, meaning that motion vectors are not useful predictions.
+								</p>
+
+								<h3>Main Idea</h3>
+
+								<p>
+									&emsp; Take advantage of the fact that the video is a sphere. Characterize or predict the motion directly on the sphere with a rotational motion model (as opposed to the regular translational motion model). Motion vectors specify axis and degree of rotation, where motion search is a radial search pattern. Rotation of the frame with respect to the predicted motion vectors is done along the geodesic via the Rodrigues’ rotation formula (an efficient method for 3D vector rotation). The rotated frame is then mapped/projected back to the reference frame in projected geometry, where performing interpolation obtains the required prediction.
+								</p>
+
+								<h3>Major Strengths</h3>
+
+									<ul>
+										<li>
+											The method averages a higher bitrate savings in all tested cases in comparison to currently used 2D coding standards (such as HEVC).
+										</li>
+										<li>
+											Motion prediction directly on the sphere removes the problem of false “warped” objects based on post-projection prediction.
+										</li>
+										<li>
+											The implementation, while being suggested to replace 2D prediction, can be used in addition for additional accuracy.
+										</li>
+									</ul>
+
+								<h3>Major Weaknesses</h3>
+
+									<ul>
+										<li>
+											In this study, they use only the previous frame as a reference frame. Many 2D coding standards, that they are comparing against, utilize multiple previous frames for a motion prediction. It is whether the standards they compared against predicted based on a single frame or not.
+										</li>
+										<li>
+											It is unclear why calculating bitrate savings is the best way to compare this method relative to currently used 2D models.
+										</li>
+										<li>
+											It is also unclear how the proposed motion search model could be implemented in a working system.
+										</li>
+									</ul>
+
+								<h3>Possible Improvements</h3>
+
+								<p>
+									&emsp; Only the previous frame is used as a reference frame in their experiment, perhaps expanding this method to interpolate based on multiple frames will improve results.
+								</p>
+
+								<b>Further Reading: <a href="https://ieeexplore.ieee.org/abstract/document/8122231">Rotational Motion Model for Temporal Prediction in 360 Video Coding</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

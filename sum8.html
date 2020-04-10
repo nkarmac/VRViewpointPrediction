@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reading Summary</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Latest</a></li>
+						<li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<h2>
+									Reading Summary: </br>Live Streaming System for Omnidirectional Video
+								</h2>
+
+								<p>
+									Nicolaus Karamanian, CSC 499 </br>March 27th, 2020
+								</p>	
+								
+								<h3>The Problem</h3>
+
+								<p> 
+									&emsp; NTT Media Intelligence Laboratories and DWANGO Co., Ltd. needed to develop an omnidirectional live streaming system where users would be delivered high quality footage of live events despite the high bandwidth requirements of omnidirectional videos. High quality requirements should allow users to experience “feelings of presence”.
+								</p>
+
+								<h3>Main Idea</h3>
+
+								<p>
+									&emsp; After catching footage with an omnidirectional camera, divide the video into seven vertically overlapping tiles which are encoded according to user requests. Tiles that users are currently looking at (within their Field of View) are requested at a higher bitrate, all others are requested at low bitrate. Tiles are overlapped to allow visual consistency when the tile in focus changes. When a user changes viewpoints, the previous high quality tile remains high quality until the new high quality tile is delivered.
+								</p>
+
+								<h3>Major Strengths</h3>
+
+									<ul>
+										<li>
+											Successfully streamed 185 minutes to 10 022 viewers with no notable problems.
+										</li>
+										<li>
+											Total bandwidth is cut in half (normally 7*1.2 = 8.4 Mbps, proposed is 1*1.2 + 6*0.5 = 4.2 Mbps).
+										</li>
+										<li>
+											The system stores all tiles in movie format for future non-live viewings at varying qualities.
+										</li>
+									</ul>
+
+								<h3>Major Weaknesses</h3>
+
+									<ul>
+										<li>
+											5 second latency of tile quality changes.
+										</li>
+										<li>
+											High quality tiles delivered after low quality tiles, causing a slight discrepancy at tile edges.
+										</li>
+										<li>
+											Users constantly viewing “overlapped” tile positions will cause a large increase in bandwidth.
+										</li>
+									</ul>
+
+								<h3>Possible Improvements</h3>
+
+								<p>
+									&emsp; Bundle high quality tiles with low quality tiles for the same payload if possible, video discrepancies will decrease user experience far more than low quality.
+								</p>
+
+								<b>Further Reading: <a href="https://ieeexplore.ieee.org/abstract/document/7223439">Live Streaming System for Omnidirectional Video</a></b>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li><a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
